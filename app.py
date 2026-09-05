@@ -17,4 +17,5 @@ participation = st.slider("Class participation score", 0.0, 100.0, 50.0)
 if st.button("Predict my score"):
     input_data = np.array([[hours, attendance, participation]])
     prediction = model.predict(input_data)
-    st.success(f"Predicted Total Score: {prediction[0]:.2f}")
+    predicted_score = np.clip(prediction[0], 0, 100)
+    st.success(f"Predicted Total Score: {predicted_score:.2f}")
